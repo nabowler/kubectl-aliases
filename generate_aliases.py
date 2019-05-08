@@ -53,6 +53,12 @@ def main():
         ('sec', 'secret', ['g', 'd', 'rm'], None),
         ('no', 'nodes', ['g', 'd'], ['sys']),
         ('ns', 'namespaces', ['g', 'd', 'rm'], ['sys']),
+        ('hr', 'helmrelease', ['g', 'd', 'rm'], None),
+        ('cj', 'cronjob', ['g', 'd', 'rm'], None),
+        ('j', 'job', ['g', 'd', 'rm'], None),
+        ('ss', 'sealedsecret', ['g', 'd', 'rm'], None),
+        ('pv', 'persistentvolumes', ['g', 'd', 'rm'], None),
+        ('pvc', 'persistentvolumeclaims', ['g', 'd', 'rm'], None),
         ]
     res_types = [r[0] for r in res]
 
@@ -60,8 +66,7 @@ def main():
         ('oyaml', '-o=yaml', ['g'], ['owide', 'ojson', 'sl']),
         ('owide', '-o=wide', ['g'], ['oyaml', 'ojson']),
         ('ojson', '-o=json', ['g'], ['owide', 'oyaml', 'sl']),
-        ('all', '--all-namespaces', ['g', 'd'], ['rm', 'f', 'no', 'sys'
-         ]),
+        ('all', '--all-namespaces', ['g', 'd'], ['rm', 'f', 'no', 'sys']),
         ('sl', '--show-labels', ['g'], ['oyaml', 'ojson']
          + diff(res_types, ['po', 'dep'])),
         ('all', '--all', ['rm'], None), # caution: reusing the alias
@@ -70,10 +75,11 @@ def main():
 
     # these accept a value, so they need to be at the end and
     # mutually exclusive within each other.
-    positional_args = [('f', '--recursive -f', ['g', 'd', 'rm'], res_types + ['all'
-                       , 'l', 'sys']), ('l', '-l', ['g', 'd', 'rm'], ['f',
-                       'all']), ('n', '--namespace', ['g', 'd', 'rm',
-                       'lo', 'ex'], ['ns', 'no', 'sys', 'all'])]
+    positional_args = [
+        ('f', '--recursive -f', ['g', 'd', 'rm'], res_types + ['all', 'l', 'sys']),
+        ('l', '-l', ['g', 'd', 'rm'], ['f',' all']),
+        ('n', '--namespace', ['g', 'd', 'rm', 'lo', 'ex'], ['ns', 'no', 'sys', 'all'])
+        ]
 
     # [(part, optional, take_exactly_one)]
     parts = [
@@ -180,4 +186,4 @@ if __name__ == '__main__':
     main()
 
 
-			
+
