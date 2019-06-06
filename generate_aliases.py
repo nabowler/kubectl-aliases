@@ -42,6 +42,9 @@ def main():
         ('d', 'describe', None, None),
         ('rm', 'delete', None, None),
         ('run', 'run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t', None, None),
+        ('s0', 'scale --replicas=0', None, None),
+        ('s1', 'scale --replicas=1', None, None),
+        ('s2', 'scale --replicas=2', None, None),
         ]
 
     res = [
@@ -59,6 +62,7 @@ def main():
         ('ss', 'sealedsecret', ['g', 'd', 'rm'], None),
         ('pv', 'persistentvolumes', ['g', 'd', 'rm'], None),
         ('pvc', 'persistentvolumeclaims', ['g', 'd', 'rm'], None),
+        ('rs', 'replicasets', ['g', 'd', 'rm', 's0', 's1', 's2'], None),
         ]
     res_types = [r[0] for r in res]
 
@@ -71,6 +75,9 @@ def main():
          + diff(res_types, ['po', 'dep'])),
         ('all', '--all', ['rm'], None), # caution: reusing the alias
         ('w', '--watch', ['g'], ['oyaml', 'ojson', 'owide']),
+        #('0', '--replicas=0', ['s'], ['oyaml', 'owide', 'ojson', 'sl', 'w', '1', '2']),
+        #('1', '--replicas=1', ['s'], ['oyaml', 'owide', 'ojson', 'sl', 'w', '0', '2']),
+        #('2', '--replicas=2', ['s'], ['oyaml', 'owide', 'ojson', 'sl', 'w', '0', '1']),
         ]
 
     # these accept a value, so they need to be at the end and
