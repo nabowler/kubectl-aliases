@@ -63,6 +63,7 @@ def main():
         ('pv', 'persistentvolumes', ['g', 'd', 'rm'], None),
         ('pvc', 'persistentvolumeclaims', ['g', 'd', 'rm'], None),
         ('rs', 'replicasets', ['g', 'd', 'rm', 's0', 's1', 's2'], None),
+        ('vs', 'virtualservice', ['g', 'd', 'rm'], None),
         ]
     res_types = [r[0] for r in res]
 
