@@ -57,6 +57,7 @@ def main():
         ('no', 'nodes', ['g', 'd'], ['sys']),
         ('ns', 'namespaces', ['g', 'd', 'rm'], ['sys']),
         ('hr', 'helmrelease', ['g', 'd', 'rm'], None),
+        ('hrf', 'helmrelease.flux', ['g', 'd', 'rm'], None),
         ('cj', 'cronjob', ['g', 'd', 'rm'], None),
         ('j', 'job', ['g', 'd', 'rm'], None),
         ('ss', 'sealedsecret', ['g', 'd', 'rm'], None),
